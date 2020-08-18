@@ -1,60 +1,58 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropertyData from "../json/data.json";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  withRouter,
-  Switch,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../index.css";
+import { withRouter } from "react-router";
 
-class PropertyList extends Component {
-  render() {
-    return (
-      <div>
-        <h1> hi </h1>
-        {PropertyData.map((propertyDetail, index) => {
-          return (
-            <div>
-              <h1>{propertyDetail.price} </h1>
-              <p>{propertyDetail.postcode}</p>
-            </div>
-          );
-        })}
-        <>
-          {PropertyData.map((propertyDetail) => (
-            <div className="item" key={propertyDetail._id}>
-              <Link to={`${propertyDetail._id}`}>
-                <button type="button">
-                  {propertyDetail.address.line1},{propertyDetail.address.city},
-                  {propertyDetail.address.postcode}
-                </button>
-              </Link>
-              <img
-                className="item--image"
-                src={propertyDetail.picture}
-                alt="Picture"
-              />
-              <div className="item--content">
-                <p>
-                  <small>Available From: {propertyDetail.available}</small>
-                </p>
-                {/* <button onClick={() => toggleLike(!like)}>Like</button> */}
-                <p>{/* <small>Likes: {like}</small> */}</p>
-                <p>£{propertyDetail.price}</p>
-              </div>
-            </div>
-          ))}
+const PropertyList = () => {
+  const [like, toggleLike] = useState(false);
 
-          <Route
-            exact
-            path="/PropertyDetails/:id"
-            render={(props) => <PropertyList {...props} />}
+  return (
+    <>
+      <div className="title">Property Listings</div>
+      {PropertyData.map((propertyDetail) => (
+        <div className="item" key={propertyDetail._id}>
+          <h1>
+            <Link to={`${propertyDetail._id}`}>
+              {propertyDetail.address.line1},{propertyDetail.address.city},
+              {propertyDetail.address.postcode}
+            </Link>
+          </h1>
+          <img
+            className="item--image"
+            src={propertyDetail.picture}
+            alt={`Home in ${propertyDetail.postCode}`}
           />
-        </>
-      </div>
-    );
-  }
-}
+          <div className="item--content">
+            <p>
+              {/* <small>Available From:  { new Intl.DateTimeFormat("en-GB", {
+                                                year: "numeric",
+                                                month: "long", 
+                                                day: "2-digit"
+                                                }).format(propertyDetail.available)}</small> */}
+            </p>
+            <button className="item--like" onClick={() => toggleLike(!like)}>
+              Like
+            </button>
+            <p>
+              {new Intl.NumberFormat("en-GB", {
+                style: "currency",
+                currency: "GBP",
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }).format(propertyDetail.price)}
+            </p>
+          </div>
+        </div>
+      ))}
 
-export default PropertyList;
+      {/* <Route
+              exact
+              path="/PropertyDetails/:id"
+              render={(props) => <PropertyEditForm {...props} />}
+            /> */}
+    </>
+  );
+};
+
+export default withRouter(PropertyList);

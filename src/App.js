@@ -18,20 +18,18 @@ export default function App() {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            {/* <Link to="/">Home</Link> */}
             <PropertyList />
           </li>
           <li>{/* <Link to="/about">About</Link> */}</li>
-          <li>
-            <Link to="/properties"> Property </Link>
-          </li>
+          <li>{/* <Link to="/properties"> Property </Link> */}</li>
         </ul>
 
         <Switch>
           {/* <Route path="/about">
             <About /> */}
           {/* </Route> */}
-          <Route path="/properties">
+          <Route path="/properties" component={PropertyList}>
             <Properties />
           </Route>
           <Route path="/">
@@ -56,7 +54,7 @@ function Properties() {
 
   return (
     <div>
-      <h2> Details </h2>
+      {/* <h2> Details </h2> */}
 
       <ul>
         <li>
