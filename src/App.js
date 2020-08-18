@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import data from "./json/data.json";
+// import data from "../json/data.json";
 import PropertyList from "./components/Properties";
 
 import {
@@ -84,6 +84,6 @@ function Properties() {
 }
 
 function Property() {
-  let { topicId } = useParams();
-  return <h3>Requested Property ID: {topicId}</h3>;
+  let { property_id } = useParams();
+  return <h3>Requested Property ID: {property_id}</h3>;
 }
