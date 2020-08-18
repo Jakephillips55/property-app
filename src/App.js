@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import data from "./json/data.json";
+import PropertyList from "./components/Properties";
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ export default function App() {
         <ul>
           <li>
             <Link to="/">Home</Link>
+            <PropertyList />
           </li>
           <li>{/* <Link to="/about">About</Link> */}</li>
           <li>
