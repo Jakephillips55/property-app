@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import PropertyData from "../json/data.json";
 import { Link } from "react-router-dom";
 import "../index.css";
+import Moment from "react-moment";
 
 const PropertyList = () => {
   const [like, toggleLike] = useState(false);
@@ -9,7 +10,7 @@ const PropertyList = () => {
   const [properties, setProperties] = useState([]);
 
   const fetchProperties = async () => {
-    const response = await fetch(`http://locahost:3000/properties`);
+    const response = await fetch("http://localhost:7000/properties");
     const data = await response.json();
     console.log(data);
     setProperties(data);
@@ -17,7 +18,7 @@ const PropertyList = () => {
 
   useEffect(() => {
     fetchProperties();
-  });
+  }, []);
 
   return (
     <>
@@ -33,15 +34,12 @@ const PropertyList = () => {
           <img
             className="item--image"
             src={propertyDetail.picture}
-            alt={`Home in ${propertyDetail.postCode}`}
+            alt={`Home in ${propertyDetail.postcode}`}
           />
           <div className="item--content">
             <p>
-              {/* {/* <small>Available From:  { new Intl.DateTimeFormat("en-GB", {
-                                                year: "numeric",
-                                                month: "long", 
-                                                day: "2-digit"
-                                                }).format(propertyDetail.available)}</small> */}
+              Available From:{" "}
+              <Moment format="DD MMM YYYY">{propertyDetail.available}</Moment>
             </p>
             <button className="item--like" onClick={() => toggleLike(!like)}>
               Like

@@ -1,4 +1,5 @@
 import React from "react";
+import { properties } from "../json/data.json";
 
 class Form extends React.Component {
   constructor(props) {
@@ -21,6 +22,10 @@ class Form extends React.Component {
   render() {
     return (
       <>
+        <div> test </div>
+        {properties.map((propertyDetail, index) => {
+          return <h1>{propertyDetail.id} </h1>;
+        })}
         <form onSubmit={this.handleSubmit}>
           <label>
             Edit Price:
