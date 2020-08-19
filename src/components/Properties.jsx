@@ -4,6 +4,41 @@ import { Link } from "react-router-dom";
 import "../index.css";
 import { withRouter } from "react-router";
 
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("A value was submitted: " + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Edit:
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
 const PropertyList = () => {
   const [like, toggleLike] = useState(false);
 
@@ -25,7 +60,7 @@ const PropertyList = () => {
           />
           <div className="item--content">
             <p>
-              {/* <small>Available From:  { new Intl.DateTimeFormat("en-GB", {
+              {/* {/* <small>Available From:  { new Intl.DateTimeFormat("en-GB", {
                                                 year: "numeric",
                                                 month: "long", 
                                                 day: "2-digit"
@@ -34,6 +69,9 @@ const PropertyList = () => {
             <button className="item--like" onClick={() => toggleLike(!like)}>
               Like
             </button>
+
+            <Form />
+
             <p>
               {new Intl.NumberFormat("en-GB", {
                 style: "currency",
