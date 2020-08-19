@@ -57,14 +57,6 @@ class Form extends React.Component {
             <input type="submit" value="Submit" />
           </label>
         </form>
-
-        <form onSubmit={this.handleSubmit}></form>
-        <form onSubmit={this.handleSubmit}>
-          <input type="submit" value="Submit" />
-        </form>
-        <form onSubmit={this.handleSubmit}>
-          <input type="submit" value="Submit" />
-        </form>
       </>
     );
   }
