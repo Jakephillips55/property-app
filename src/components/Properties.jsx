@@ -12,7 +12,7 @@ const PropertyList = () => {
       {PropertyData.map((propertyDetail) => (
         <div className="item" key={propertyDetail._id}>
           <h1>
-            <Link to={`${propertyDetail._id}`}>
+            <Link to={`/properties/${propertyDetail._id}`}>
               {propertyDetail.address.line1},{propertyDetail.address.city},
               {propertyDetail.address.postcode}
             </Link>
