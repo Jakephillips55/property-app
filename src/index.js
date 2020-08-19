@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import "./index.css";
+
 // import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -17,8 +18,8 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/" exact component={App} />
-        <Route exact path="/properties/:_id" component={PropertyList} />
+        <Route path="/" exact component={PropertyList} />
+        <Route exact path="/properties/:id" component={Form} />
         {/* The line below is from App.js I have commmented out hte call to App.js as not necessary */}
         <PropertyList />
       </Switch>
