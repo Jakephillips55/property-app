@@ -1,20 +1,20 @@
 {
   "properties": [
     {
-      "_id": 1,
-      "price": 148888,
-      "available": "2014-02-10T10:50:42.389Z",
-      "picture": "home.jpeg",
-      "address": {
-        "line1": "Kulas Light",
-        "city": "Gwenborough",
-        "postcode": "NW11 3BB"
-      }
-    },
-    {
-      "_id": 2,
+      "id": 1,
       "price": 148586,
       "available": "2014-02-10T10:50:42.389Z",
+      "picture": "blah.jpeg",
+      "address": {
+        "line1": "Kulas Light",
+        "city": "Gwenborough",
+        "postcode": "NW11 3BB"
+      }
+    },
+    {
+      "id": 2,
+      "price": 548586,
+      "available": "2014-02-10T10:50:42.389Z",
       "picture": "home.jpeg",
       "address": {
         "line1": "Kulas Light",
@@ -23,7 +23,7 @@
       }
     },
     {
-      "_id": 3,
+      "id": 3,
       "price": 14853488,
       "available": "2014-02-10T10:50:42.389Z",
       "picture": "home.jpeg",
@@ -34,12 +34,45 @@
       }
     },
     {
-      "_id": 4,
+      "id": 4,
       "price": 14234858,
       "available": "2014-02-10T10:50:42.389Z",
       "picture": "home.jpeg",
       "address": {
         "line1": "Kulas Light",
+        "city": "Gwenborough",
+        "postcode": "NW11 3BB"
+      }
+    },
+    {
+      "price": 148586,
+      "available": "2014-02-10T10:50:42.389Z",
+      "picture": "blah.jpeg",
+      "address": {
+        "line1": "Kulas Light",
+        "city": "Gwenborough",
+        "postcode": "NW11 3BB"
+      },
+      "id": 5
+    },
+    {
+      "id": 6,
+      "price": 148586,
+      "available": "2014-02-10T10:50:42.389Z",
+      "picture": "zah.jpeg",
+      "address": {
+        "line1": "Kulas Light",
+        "city": "Gwenborough",
+        "postcode": "NW11 3BB"
+      }
+    },
+    {
+      "id": 7,
+      "price": 148586,
+      "available": "2014-02-10T10:50:42.389Z",
+      "picture": "zah.jpeg",
+      "address": {
+        "line1": "Light",
         "city": "Gwenborough",
         "postcode": "NW11 3BB"
       }

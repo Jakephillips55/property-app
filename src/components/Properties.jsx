@@ -1,18 +1,31 @@
-import React, { useState } from "react";
-import PropertyData from "../json/data.json";
+import React, { useState, useEffect } from "react";
+// import PropertyData from "../json/data.json";
 import { Link } from "react-router-dom";
 import "../index.css";
 
 const PropertyList = () => {
   const [like, toggleLike] = useState(false);
 
+  const [properties, setProperties] = useState([]);
+
+  const fetchProperties = async () => {
+    const response = await fetch(`http://locahost:3000/properties`);
+    const data = await response.json();
+    console.log(data);
+    setProperties(data);
+  };
+
+  useEffect(() => {
+    fetchProperties();
+  });
+
   return (
     <>
       <div className="title">Property Listings</div>
-      {PropertyData.map((propertyDetail) => (
-        <div className="item" key={propertyDetail._id}>
+      {properties.map((propertyDetail) => (
+        <div className="item" key={propertyDetail.id}>
           <h1>
-            <Link to={`/properties/${propertyDetail._id}`}>
+            <Link to={`/properties/${propertyDetail.id}`}>
               {propertyDetail.address.line1},{propertyDetail.address.city},
               {propertyDetail.address.postcode}
             </Link>
