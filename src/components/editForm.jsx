@@ -31,8 +31,6 @@ class Form extends React.Component {
             />
           </label>
           <input type="submit" value="Submit" />
-        </form>
-        <form onSubmit={this.handleSubmit}>
           <label>
             Edit Available Date:
             <input
@@ -41,9 +39,6 @@ class Form extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-          <input type="submit" value="Submit" />
-        </form>
-        <form onSubmit={this.handleSubmit}>
           <label>
             Edit Address:
             <input
@@ -52,9 +47,6 @@ class Form extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-          <input type="submit" value="Submit" />
-        </form>
-        <form onSubmit={this.handleSubmit}>
           <label>
             Edit Postcode:
             <input
@@ -62,7 +54,15 @@ class Form extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}
             />
+            <input type="submit" value="Submit" />
           </label>
+        </form>
+
+        <form onSubmit={this.handleSubmit}></form>
+        <form onSubmit={this.handleSubmit}>
+          <input type="submit" value="Submit" />
+        </form>
+        <form onSubmit={this.handleSubmit}>
           <input type="submit" value="Submit" />
         </form>
       </>

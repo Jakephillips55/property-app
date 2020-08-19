@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PropertyData from "../json/data.json";
 import { Link } from "react-router-dom";
 import "../index.css";
-import { withRouter } from "react-router";
-import Form from "./editForm";
 
 const PropertyList = () => {
   const [like, toggleLike] = useState(false);
@@ -36,8 +34,6 @@ const PropertyList = () => {
               Like
             </button>
 
-            <Form />
-
             <p>
               {new Intl.NumberFormat("en-GB", {
                 style: "currency",
@@ -59,4 +55,4 @@ const PropertyList = () => {
   );
 };
 
-export default withRouter(PropertyList);
+export default PropertyList;

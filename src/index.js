@@ -21,8 +21,6 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact component={PropertyList} />
         <Route exact path="/properties/:id" component={Form} />
-        {/* The line below is from App.js I have commmented out hte call to App.js as not necessary */}
-        <PropertyList />
       </Switch>
     </Router>
   </React.StrictMode>,
