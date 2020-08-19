@@ -18,9 +18,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/" exact component={App} />
-
         <Route exact path="/properties/:_id" component={PropertyList} />
-
         {/* The line below is from App.js I have commmented out hte call to App.js as not necessary */}
         <PropertyList />
       </Switch>
