@@ -1,70 +1,115 @@
-import React from "react";
-import { properties } from "../json/data.json";
+import React, { useState, useEffect } from "react";
+import { MomentInput } from "react-moment";
+function Form({ match }) {
+  const url = "http://localhost:7000/properties/" + match.params.id;
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "Price" };
+  const [property, setProperty] = useState(null);
+  const [address, setAddress] = useState(null);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  useEffect(() => {
+    console.log("fetching property");
+    fetch(`http://localhost:7000/properties/${match.params.id}/`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setProperty(res);
+        setAddress(res.address);
+      });
+  }, [match.params.id]);
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  const updateProperty = async () => {
+    let updateDetails = property;
+    updateDetails["address"] = address;
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-  handleSubmit(event) {
-    alert("A value was submitted: " + this.state.value);
+      body: JSON.stringify(property),
+    });
+    const data = await response.json();
+    setProperty(data);
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-  }
+    updateProperty();
+  };
 
-  render() {
-    return (
-      <>
-        <div> test </div>
-        {properties.map((propertyDetail, index) => {
-          return <h1>{propertyDetail.id} </h1>;
-        })}
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Edit Price:
+  return (
+    <div>
+      {property && address && property.available ? (
+        <form onSubmit={handleSubmit} className="item">
+          <label className="label">
+            Address:
             <input
               type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
+              name="line1"
+              value={address.line1}
+              onChange={(event) =>
+                setAddress({ ...address, line1: event.target.value })
+              }
             />
           </label>
-          <input type="submit" value="Submit" />
-          <label>
-            Edit Available Date:
+          <br />
+          <label className="label">Postcode:</label>
+          <input
+            type="text"
+            name="postcode"
+            value={address.postcode}
+            onChange={(event) =>
+              setAddress({ ...address, postcode: event.target.value })
+            }
+          />
+
+          <br />
+          <label className="label">City:</label>
+          <input
+            type="text"
+            name="city"
+            value={address.city}
+            onChange={(event) =>
+              setAddress({ ...address, city: event.target.value })
+            }
+          />
+
+          <br />
+          <label className="label">
+            Price:
             <input
               type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
+              name="price"
+              value={property.price}
+              onChange={(event) =>
+                setProperty({ ...property, price: event.target.value })
+              }
             />
           </label>
-          <label>
-            Edit Address:
+          <br />
+          <label className="label">
+            Available:
             <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
+              type="date"
+              name="available"
+              value={property.available.slice(0, 10)}
+              onChange={(event) =>
+                setProperty({
+                  ...property,
+                  available: new Date(event.target.value).toISOString(),
+                })
+              }
             />
+            {console.log(property.available)}
           </label>
-          <label>
-            Edit Postcode:
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <input type="submit" value="Submit" />
-          </label>
+          <br />
+          <input type="submit" value="Update Property" />
         </form>
-      </>
-    );
-  }
+      ) : (
+        "Loading... "
+      )}
+    </div>
+  );
 }
 
 export default Form;
