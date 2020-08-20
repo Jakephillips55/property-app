@@ -9,7 +9,8 @@
         "line1": "Kulas Light",
         "city": "Gwenborough",
         "postcode": "NW11 3BB"
-      }
+      },
+      "like": true
     },
     {
       "id": 2,
