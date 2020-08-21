@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { MomentInput } from "react-moment";
+import ImageUploader from "react-images-upload";
+
 function Form({ match }) {
   const url = "http://localhost:7000/properties/" + match.params.id;
 
@@ -35,6 +36,10 @@ function Form({ match }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     updateProperty();
+  };
+
+  const onDrop = (picture) => {
+    setProperty({ ...property, picture: picture });
   };
 
   return (
@@ -73,7 +78,19 @@ function Form({ match }) {
               setAddress({ ...address, city: event.target.value })
             }
           />
-
+          <br />
+          <img
+            className="item--image"
+            src={`http://localhost:3000/${property.picture}`}
+            alt={`Home in ${property.postCode}`}
+          />
+          <ImageUploader
+            withIcon={true}
+            buttonText="Choose images"
+            onChange={onDrop}
+            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            maxFileSize={5242880}
+          />
           <br />
           <label className="label">
             Price:
@@ -84,6 +101,16 @@ function Form({ match }) {
               onChange={(event) =>
                 setProperty({ ...property, price: event.target.value })
               }
+            />
+          </label>
+          <br />
+          <label className="label">
+            Like:
+            <input
+              type="button"
+              name="like"
+              value={property.like ? "LIKE" : "NOT LIKE"}
+              onClick={() => setProperty({ ...property, like: !property.like })}
             />
           </label>
           <br />
@@ -103,6 +130,7 @@ function Form({ match }) {
             {console.log(property.available)}
           </label>
           <br />
+
           <input type="submit" value="Update Property" />
         </form>
       ) : (

@@ -41,9 +41,10 @@ const PropertyList = () => {
               Available From:{" "}
               <Moment format="DD MMM YYYY">{propertyDetail.available}</Moment>
             </p>
-            <button className="item--like" onClick={() => toggleLike(!like)}>
-              Like
-            </button>
+
+            <p className="item--like">
+              {propertyDetail.like ? "Favourited" : "Not Favourited"}
+            </p>
 
             <p>
               {new Intl.NumberFormat("en-GB", {
