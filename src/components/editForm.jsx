@@ -95,11 +95,14 @@ function Form({ match }) {
           <label className="label">
             Price:
             <input
-              type="text"
+              type="number"
               name="price"
-              value={property.price}
+              value={parseInt(property.price)}
               onChange={(event) =>
-                setProperty({ ...property, price: event.target.value })
+                setProperty({
+                  ...property,
+                  price: parseInt(event.target.value),
+                })
               }
             />
           </label>
