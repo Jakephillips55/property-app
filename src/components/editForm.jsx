@@ -43,7 +43,9 @@ function Form({ match }) {
   };
 
   return (
-    <div>
+    <div className="title">
+      {" "}
+      Edit Listing
       {property && address && property.available ? (
         <form onSubmit={handleSubmit} className="item">
           <label className="label">

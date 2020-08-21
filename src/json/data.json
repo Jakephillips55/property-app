@@ -4,7 +4,7 @@
       "id": 1,
       "price": 148586,
       "available": "2014-02-10T10:50:42.389Z",
-      "picture": "blah.jpeg",
+      "picture": "home.jpeg",
       "address": {
         "line1": "Kulas Light",
         "city": "Gwenborough",
@@ -48,7 +48,7 @@
     {
       "price": 148586,
       "available": "2014-02-10T10:50:42.389Z",
-      "picture": "blah.jpeg",
+      "picture": "home.jpeg",
       "address": {
         "line1": "Kulas Light",
         "city": "Gwenborough",
@@ -60,7 +60,7 @@
       "id": 6,
       "price": 148586,
       "available": "2014-02-10T10:50:42.389Z",
-      "picture": "zah.jpeg",
+      "picture": "home.jpeg",
       "address": {
         "line1": "Kulas Light",
         "city": "Gwenborough",
@@ -71,7 +71,7 @@
       "id": 7,
       "price": 148586,
       "available": "2014-02-10T10:50:42.389Z",
-      "picture": "zah.jpeg",
+      "picture": "home.jpeg",
       "address": {
         "line1": "Light",
         "city": "Gwenborough",
