@@ -25,17 +25,21 @@ const PropertyList = () => {
       <div className="title">Property Listings</div>
       {properties.map((propertyDetail) => (
         <div className="item" key={propertyDetail.id}>
-          <h1>
-            <Link to={`/properties/${propertyDetail.id}`}>
-              {propertyDetail.address.line1},{propertyDetail.address.city},
-              {propertyDetail.address.postcode}
-            </Link>
-          </h1>
-          <img
-            className="item--image"
-            src={propertyDetail.picture}
-            alt={`Home in ${propertyDetail.postcode}`}
-          />
+          <center>
+            <h1>
+              <Link to={`/properties/${propertyDetail.id}`}>
+                {propertyDetail.address.line1},{propertyDetail.address.city},
+                {propertyDetail.address.postcode}
+              </Link>
+            </h1>
+          </center>
+          <center>
+            <img
+              className="item--image"
+              src={propertyDetail.picture}
+              alt={`Home in ${propertyDetail.postcode}`}
+            />
+          </center>
           <div className="item--content">
             <p>
               Available From:{" "}
@@ -43,7 +47,7 @@ const PropertyList = () => {
             </p>
 
             <p className="item--like">
-              {propertyDetail.like ? "Favourited" : "Not Favourited"}
+              {propertyDetail.like ? "Favourited ❤️" : "Not Favourited 🖤"}
             </p>
 
             <p>

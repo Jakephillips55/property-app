@@ -113,7 +113,7 @@ function Form({ match }) {
             <input
               type="button"
               name="like"
-              value={property.like ? "Favourite this" : "Remove from favourite"}
+              value={property.like ? "Remove this favourite" : "Favourite this"}
               onClick={() => setProperty({ ...property, like: !property.like })}
             />
           </label>
